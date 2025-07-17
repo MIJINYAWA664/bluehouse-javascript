@@ -2,6 +2,14 @@ var database = [
     {
         username: "salisu",
         password: "adamu"
+    },
+    {
+        username: "david",
+        password: "light"
+    },
+    {
+        username: "yagami",
+        password: "boys"
     }
 ];
 
@@ -23,8 +31,17 @@ var newsfeed = [
 var usernamePrompt = prompt("enter username");
 var passwordPrompt = prompt("enter password");
 
-function signIn (user,pass){
-    if(user === database[0].username && pass === database[0].password){
+function isUserValid (username,password){
+    for(i = 0; i < database.length; i++){
+        if(username === database[i].username && password === database[i].password){
+            return true; 
+        }
+    }
+    return false;
+}
+
+function signIn (username,password){
+    if(isUserValid (username,password)){
         console.log(newsfeed);
     } else {
         alert("wrong details");
